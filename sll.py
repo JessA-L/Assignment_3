@@ -82,7 +82,12 @@ class LinkedList:
         This method adds a new node at the end of the list.
         It will be implemented with O(N) runtime complexity.
         """
-        pass
+        curr = self._head
+        while curr.next != None:
+            curr = curr.next
+        new_node = SLNode(value)
+        curr.next = new_node
+        new_node.next = None
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
@@ -152,13 +157,13 @@ if __name__ == "__main__":
         lst.insert_front(case)
         print(lst)
 
-    # print("\n# insert_back example 1")
-    # test_case = ["C", "B", "A"]
-    # lst = LinkedList()
-    # for case in test_case:
-    #     lst.insert_back(case)
-    #     print(lst)
-    #
+    print("\n# insert_back example 1")
+    test_case = ["C", "B", "A"]
+    lst = LinkedList()
+    for case in test_case:
+        lst.insert_back(case)
+        print(lst)
+
     # print("\n# insert_at_index example 1")
     # lst = LinkedList()
     # test_cases = [(0, "A"), (0, "B"), (1, "C"), (3, "D"), (-1, "E"), (5, "F")]
