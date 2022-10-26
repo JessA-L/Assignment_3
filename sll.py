@@ -99,8 +99,13 @@ class LinkedList:
         If the linked list contains N nodes (the sentinel node is not included
         in this count), valid indices for this method are [0, N] inclusive.
         """
+        if index < 0:
+            raise SLLException
+
         curr = self._head
         for num in range(index):
+            if curr.next == None:
+                raise SLLException
             curr = curr.next
         new_node = SLNode(value)
         new_node.next = curr.next
