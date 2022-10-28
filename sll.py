@@ -164,7 +164,13 @@ class LinkedList:
         This method returns a Boolean value based on whether or not the provided “value” object
         exists in the list.
         """
-        pass
+        curr = self._head
+        for node in range(self.length()):
+            curr = curr.next
+            if curr.value == value:
+                return True
+
+        return False
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
