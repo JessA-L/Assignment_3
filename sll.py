@@ -119,7 +119,7 @@ class LinkedList:
         “SLLException”. If the list contains N elements (the sentinel node is not
         included in this count), valid indices for this method are [0, N - 1] inclusive.
         """
-        if index < 0:
+        if index < 0 or self.is_empty() == True:
             raise SLLException
 
         curr = self._head
