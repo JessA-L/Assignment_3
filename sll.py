@@ -150,7 +150,14 @@ class LinkedList:
         This method counts the number of elements in the list that match the provided “value”
         object. The method then returns this number.
         """
-        pass
+        curr = self._head
+        count = 0
+        for node in range(self.length()):
+            curr = curr.next
+            if curr.value == value:
+                count += 1
+
+        return count
 
     def find(self, value: object) -> bool:
         """
@@ -211,31 +218,31 @@ if __name__ == "__main__":
     #         print(lst)
     #     except Exception as e:
     #         print(type(e))
-
-    print("\n# remove example 1")
-    lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
-    for value in [7, 3, 3, 3, 3]:
-        print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
-              f"\n {lst}")
-
-    print("\n# remove example 2")
-    lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
-    for value in [1, 2, 3, 1, 2, 3, 3, 2, 1]:
-        print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
-              f"\n {lst}")
-
-    # print("\n# count example 1")
-    # lst = LinkedList([1, 2, 3, 1, 2, 2])
-    # print(lst, lst.count(1), lst.count(2), lst.count(3), lst.count(4))
     #
-    # print("\n# find example 1")
-    # lst = LinkedList(["Waldo", "Clark Kent", "Homer", "Santa Claus"])
-    # print(lst)
-    # print(lst.find("Waldo"))
-    # print(lst.find("Superman"))
-    # print(lst.find("Santa Claus"))
+    # print("\n# remove example 1")
+    # lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    # print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
+    # for value in [7, 3, 3, 3, 3]:
+    #     print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
+    #           f"\n {lst}")
+    #
+    # print("\n# remove example 2")
+    # lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    # print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
+    # for value in [1, 2, 3, 1, 2, 3, 3, 2, 1]:
+    #     print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
+    #           f"\n {lst}")
+
+    print("\n# count example 1")
+    lst = LinkedList([1, 2, 3, 1, 2, 2])
+    print(lst, lst.count(1), lst.count(2), lst.count(3), lst.count(4))
+
+    print("\n# find example 1")
+    lst = LinkedList(["Waldo", "Clark Kent", "Homer", "Santa Claus"])
+    print(lst)
+    print(lst.find("Waldo"))
+    print(lst.find("Superman"))
+    print(lst.find("Santa Claus"))
     #
     # print("\n# slice example 1")
     # lst = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
