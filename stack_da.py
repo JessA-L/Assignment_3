@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Jessica Allman-LaPorte
+# OSU Email: allmanlj@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 10/31/2022
+# Description: Implement a Singly Linked List data structure
 
 
 from dynamic_array import *
@@ -52,9 +52,10 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new element to the top of the stack. It must be implemented with O(1)
+        amortized runtime complexity
         """
-        pass
+        self._da.append(value)
 
     def pop(self) -> object:
         """
