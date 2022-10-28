@@ -119,7 +119,15 @@ class LinkedList:
         “SLLException”. If the list contains N elements (the sentinel node is not
         included in this count), valid indices for this method are [0, N - 1] inclusive.
         """
-        pass
+        if index < 0:
+            raise SLLException
+
+        curr = self._head
+        for num in range(index):
+            if curr.next.next == None:
+                raise SLLException
+            curr = curr.next
+        curr.next = curr.next.next
 
     def remove(self, value: object) -> bool:
         """
@@ -174,28 +182,28 @@ if __name__ == "__main__":
     #     lst.insert_back(case)
     #     print(lst)
 
-    print("\n# insert_at_index example 1")
-    lst = LinkedList()
-    test_cases = [(0, "A"), (0, "B"), (1, "C"), (3, "D"), (-1, "E"), (5, "F")]
-    for index, value in test_cases:
-        print("Inserted", value, "at index", index, ": ", end="")
+    # print("\n# insert_at_index example 1")
+    # lst = LinkedList()
+    # test_cases = [(0, "A"), (0, "B"), (1, "C"), (3, "D"), (-1, "E"), (5, "F")]
+    # for index, value in test_cases:
+    #     print("Inserted", value, "at index", index, ": ", end="")
+    #     try:
+    #         lst.insert_at_index(index, value)
+    #         print(lst)
+    #     except Exception as e:
+    #         print(type(e))
+
+    print("\n# remove_at_index example 1")
+    lst = LinkedList([1, 2, 3, 4, 5, 6])
+    print(f"Initial LinkedList : {lst}")
+    for index in [0, 2, 0, 2, 2, -2]:
+        print("Removed at index", index, ": ", end="")
         try:
-            lst.insert_at_index(index, value)
+            lst.remove_at_index(index)
             print(lst)
         except Exception as e:
             print(type(e))
 
-    # print("\n# remove_at_index example 1")
-    # lst = LinkedList([1, 2, 3, 4, 5, 6])
-    # print(f"Initial LinkedList : {lst}")
-    # for index in [0, 2, 0, 2, 2, -2]:
-    #     print("Removed at index", index, ": ", end="")
-    #     try:
-    #         lst.remove_at_index(index)
-    #         print(lst)
-    #     except Exception as e:
-    #         print(type(e))
-    #
     # print("\n# remove example 1")
     # lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
     # print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
