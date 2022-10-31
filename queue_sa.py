@@ -94,7 +94,7 @@ class Queue:
             raise QueueException
 
         value = self.front()
-        self._sa[self._front] = None
+        # self._sa[self._front] = None
         self._front = self._increment(self._front)
 
         self._current_size -= 1
