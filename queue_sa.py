@@ -122,16 +122,17 @@ class Queue:
 
         # copy data from _data to _new_data
         original_data_index = self._front
-        for index in range(self._sa.length()):
+        for index in range(self.size()):
             _new_data[index] = self._sa[original_data_index]
             original_data_index += 1
             original_data_index = original_data_index % self._sa.length()
 
 
         # _new_data replaces original _data array
-        self._sa._data = _new_data
+        self._sa._data = _new_data.data
         self._sa._capacity = self._sa.length() * 2
         self._sa._size = self._sa._capacity
+        # self._sa._size = self._sa.length() * 2
         self._front = 0
         self._back = self._current_size - 1
 
@@ -147,6 +148,19 @@ if __name__ == "__main__":
     # for value in [1, 2, 3, 4, 5]:
     #     q.enqueue(value)
     # print(q)
+
+    print("\n# my example i #")
+    print("\n# enqueue()")
+    q = Queue()
+    print(q)
+    print(q.print_underlying_sa())
+    for value in [1, 2, 3, 4]:
+        q.enqueue(value)
+    print(q)
+    print(q.print_underlying_sa())
+    q.enqueue(5)
+    print(q)
+    print(q.print_underlying_sa())
 
     print("\n# my example")
     q = Queue()
