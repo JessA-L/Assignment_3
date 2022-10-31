@@ -124,16 +124,11 @@ class Queue:
         original_data_index = self._front
         for index in range(self.size()):
             _new_data[index] = self._sa[original_data_index]
-            original_data_index += 1
-            original_data_index = original_data_index % self._sa.length()
-
+            original_data_index = self._increment(original_data_index)
 
         # _new_data replaces original _data array
         self._sa._data = _new_data
         self._sa = self._sa._data
-        # self._sa._capacity = self._sa.length() * 2
-        # self._sa._size = self._sa._capacity
-        # self._sa._size = self._sa.length() * 2
         self._front = 0
         self._back = self._current_size - 1
 
