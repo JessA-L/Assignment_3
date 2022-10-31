@@ -89,7 +89,7 @@ class Queue:
         if self.is_empty():
             raise QueueException
 
-        value = self._sa[self._front]
+        value = self.front()
         self._front = self._increment(self._front)
 
         self._current_size -= 1
@@ -101,7 +101,9 @@ class Queue:
         will be implemented with O(1) runtime complexity. If the queue is empty, the
         method raises a custom “QueueException”.
         """
-        pass
+        if self.is_empty():
+            raise QueueException
+        return self._sa[self._front]
 
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #
