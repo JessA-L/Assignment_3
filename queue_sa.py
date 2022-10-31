@@ -79,6 +79,10 @@ class Queue:
         self._back = self._increment(self._back)
         self._sa[self._back] = value
 
+        #     self[(front+back) % len(self)
+        # index = self._front + self._back % self._sa.length()
+        # self._sa[index] = value
+
 
     def dequeue(self) -> object:
         """
@@ -90,6 +94,7 @@ class Queue:
             raise QueueException
 
         value = self.front()
+        self._sa[self._front] = None
         self._front = self._increment(self._front)
 
         self._current_size -= 1
@@ -110,33 +115,54 @@ class Queue:
 
     def _double_queue(self) -> None:
         """
-        Resizes array to twice its original size and reorders original array so the the
+        Resizes array to twice its original size and reorders original array so that the
         front of the queue is at index 0
         """
-
         _new_data = StaticArray(self._sa.length() * 2)
 
         # copy data from _data to _new_data
+        original_data_index = self._front
         for index in range(self._sa.length()):
-            _new_data[index] = self._sa.data[index]
+            _new_data[index] = self._sa.data[original_data_index]
+            original_data_index += 1
+            original_data_index = original_data_index % self._sa.length()
+
 
         # _new_data replaces original _data array
         self._sa._data = _new_data
         self._sa._capacity = self._sa.length() * 2
         self._sa._size = self._sa._capacity
+        self._front = 0
+        self._back = self._current_size - 1
 
 
 # ------------------- BASIC TESTING -----------------------------------------
 
 if __name__ == "__main__":
 
-    print("\n# Basic functionality tests #")
-    print("\n# enqueue()")
+    # print("\n# Basic functionality tests #")
+    # print("\n# enqueue()")
+    # q = Queue()
+    # print(q)
+    # for value in [1, 2, 3, 4, 5]:
+    #     q.enqueue(value)
+    # print(q)
+
+    print("\n# my example")
     q = Queue()
-    print(q)
     for value in [1, 2, 3, 4, 5]:
         q.enqueue(value)
     print(q)
+    print(q.dequeue())
+    print(q)
+    print(q.print_underlying_sa())
+    for value in [6, 7, 8, 9]:
+        q.enqueue(value)
+    print(q)
+    print(q.print_underlying_sa())
+    q.enqueue(10)
+    print(q)
+    print(q.print_underlying_sa())
 
     print("\n# dequeue()")
     q = Queue()
