@@ -1,9 +1,10 @@
-# Name:
-# OSU Email:
+# Name: Jessica Allman-LaPorte
+# OSU Email: allmanlj@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 10/31/2022
+# Description: Implements a stack ADT using a single linked list data structure
+
 
 
 from SLNode import SLNode
@@ -63,9 +64,16 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new element to the top of the stack. It must be implemented with
+        O(1) runtime complexity.
         """
-        pass
+        if self.is_empty():
+            self._head = SLNode(value)
+            return
+        new_node = SLNode(value)
+        new_node.next = self._head
+        self._head = new_node
+
 
     def pop(self) -> object:
         """

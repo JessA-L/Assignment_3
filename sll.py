@@ -74,8 +74,9 @@ class LinkedList:
         It will be implemented with O(1) runtime complexity.
         """
         new_node = SLNode(value)
-        new_node.next = self._head.next
-        self._head.next = new_node
+        # new_node.next = self._head.next
+        # self._head.next = new_node
+        new_node.next, self._head.next = self._head.next, new_node.next
 
     def insert_back(self, value: object) -> None:
         """
