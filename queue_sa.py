@@ -123,7 +123,7 @@ class Queue:
         # copy data from _data to _new_data
         original_data_index = self._front
         for index in range(self._sa.length()):
-            _new_data[index] = self._sa.data[original_data_index]
+            _new_data[index] = self._sa[original_data_index]
             original_data_index += 1
             original_data_index = original_data_index % self._sa.length()
 
