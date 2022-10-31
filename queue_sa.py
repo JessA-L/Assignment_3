@@ -1,9 +1,10 @@
-# Name:
-# OSU Email:
+# Name: Jessica Allman-LaPorte
+# OSU Email: allmanlj@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 10/31/2022
+# Description: Implement a queue ADT using a static array
+
 
 
 # Note: Changing any part of the pre-implemented methods (besides adding  #
@@ -68,19 +69,37 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new value to the end of the queue. It will be implemented with
+        O(1) amortized runtime complexity.
         """
-        pass
+        if self._current_size == self._sa.length():
+            self._double_queue()
+        self._current_size += 1
+
+        self._back = self._increment(self._back)
+        self._sa[self._back] = value
+
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        This method removes and returns the value at the beginning of the queue. It will be
+        implemented with O(1) runtime complexity. If the queue is empty, the method raises a
+        custom “QueueException”.
         """
-        pass
+        if self.is_empty():
+            raise QueueException
+
+        value = self._sa[self._front]
+        self._front = self._increment(self._front)
+
+        self._current_size -= 1
+        return value
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the value of the front element of the queue without removing it. It
+        will be implemented with O(1) runtime complexity. If the queue is empty, the
+        method raises a custom “QueueException”.
         """
         pass
 
@@ -89,9 +108,20 @@ class Queue:
 
     def _double_queue(self) -> None:
         """
-        TODO: Write this implementation
+        Resizes array to twice its original size and reorders original array so the the
+        front of the queue is at index 0
         """
-        pass
+
+        _new_data = StaticArray(self._sa.length() * 2)
+
+        # copy data from _data to _new_data
+        for index in range(self._sa.length()):
+            _new_data[index] = self._sa.data[index]
+
+        # _new_data replaces original _data array
+        self._sa._data = _new_data
+        self._sa._capacity = self._sa.length() * 2
+        self._sa._size = self._sa._capacity
 
 
 # ------------------- BASIC TESTING -----------------------------------------

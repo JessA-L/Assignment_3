@@ -94,6 +94,10 @@ class StaticArray:
         """Return length of the array (number of elements)."""
         return self._size
 
+    @property
+    def data(self):
+        return self._data
+
 
 if __name__ == "__main__":
 
