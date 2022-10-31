@@ -129,10 +129,10 @@ class Queue:
 
 
         # _new_data replaces original _data array
-        self._sa._data = _new_data.data
-        self._sa._capacity = self._sa.length() * 2
-        self._sa._size = self._sa._capacity
-        # self._sa._size = self._sa.length() * 2
+        self._sa._data = _new_data._data
+        # self._sa._capacity = self._sa.length() * 2
+        # self._sa._size = self._sa._capacity
+        self._sa._size = self._sa.length() * 2
         self._front = 0
         self._back = self._current_size - 1
 
