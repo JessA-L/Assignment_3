@@ -73,7 +73,7 @@ class Queue:
 
         # traverse through ll
         curr = self._head
-        while curr.next != None:
+        while curr.next is None:
             curr = curr.next
 
         # create new node, assign the current last node's next to new node
