@@ -77,15 +77,26 @@ class Stack:
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        This method removes the top element from the stack and returns its value. It will be
+        implemented with O(1) runtime complexity. If the stack is empty, the method raises a
+        custom “StackException”.
         """
-        pass
+        if self.is_empty():
+            raise StackException
+        data = self._head.value
+        self._head = self._head.next
+
+        return data
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the value of the top element of the stack without removing it. It must
+        be implemented with O(1) runtime complexity. If the stack is empty, the method
+        raises a custom “StackException”.
         """
-        pass
+        if self.is_empty():
+            raise StackException
+        return self._head.value
 
 # ------------------- BASIC TESTING -----------------------------------------
 
