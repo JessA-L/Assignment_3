@@ -84,7 +84,7 @@ class LinkedList:
         """
         # traverse through linked list
         curr = self._head
-        while curr.next != None:
+        while curr.next is not None:
             curr = curr.next
 
         # create new node, assign the current last node's next to new node
@@ -107,7 +107,7 @@ class LinkedList:
 
         curr = self._head
         for num in range(index):
-            if curr.next == None:
+            if curr.next is None:
                 raise SLLException
             curr = curr.next
         new_node = SLNode(value)
@@ -122,12 +122,12 @@ class LinkedList:
         “SLLException”. If the list contains N elements (the sentinel node is not
         included in this count), valid indices for this method are [0, N - 1] inclusive.
         """
-        if index < 0 or self.is_empty() == True:
+        if index < 0 or self.is_empty() is True:
             raise SLLException
 
         curr = self._head
         for num in range(index):
-            if curr.next.next == None:
+            if curr.next.next is None:
                 raise SLLException
             curr = curr.next
         curr.next = curr.next.next
@@ -164,7 +164,7 @@ class LinkedList:
 
     def find(self, value: object) -> bool:
         """
-        This method returns a Boolean value based on whether or not the provided “value” object
+        This method returns a Boolean value based on whether the provided “value” object
         exists in the list.
         """
         curr = self._head
@@ -185,7 +185,7 @@ class LinkedList:
         """
         # If the provided start index is invalid, or if there are not enough nodes between the start index
         #         and the end of the list to make a slice of the requested size, raise “SLLException”.
-        if start_index < 0 or start_index > self.length()-1 or \
+        if start_index < 0 or start_index > self.length() - 1 or \
                 size > self.length() - start_index or size < 0:
             raise SLLException
 
