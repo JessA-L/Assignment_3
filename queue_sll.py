@@ -64,21 +64,43 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        This method adds a new value to the end of the queue. It will be implemented with
+        O(1) runtime complexity.
         """
-        pass
+        if self.is_empty():
+            self._head = SLNode(value)
+            return
+        curr = self._head
+        while curr.next != None:
+            curr = curr.next
+        new_node = SLNode(value)
+        curr.next = new_node
+        new_node.next = None
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        This method removes and returns the value from the beginning of the queue. It will be
+        implemented with O(1) runtime complexity. If the queue is empty, the method raises a
+        custom “QueueException”.
         """
-        pass
+        if self.is_empty():
+            raise QueueException
+
+        data = self.front()
+        self._head = self._head.next
+
+        return data
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        This method returns the value of the front element of the queue without removing it. It
+        will be implemented with O(1) runtime complexity. If the queue is empty, the
+        method raises a custom “QueueException”
         """
-        pass
+        if self.is_empty():
+            raise QueueException
+
+        return self._head.value
 
 
 # ------------------- BASIC TESTING -----------------------------------------
