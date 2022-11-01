@@ -82,9 +82,12 @@ class LinkedList:
         This method adds a new node at the end of the list.
         It will be implemented with O(N) runtime complexity.
         """
+        # traverse through linked list
         curr = self._head
         while curr.next != None:
             curr = curr.next
+
+        # create new node, assign the current last node's next to new node
         new_node = SLNode(value)
         curr.next = new_node
         new_node.next = None
@@ -176,14 +179,12 @@ class LinkedList:
         """
         This method returns a new LinkedList object that contains the requested number of nodes
         from the original list, starting with the node located at the requested start index. If the
-        original list contains N nodes, a valid start_index is in range [0, N - 1] inclusive. The
-        original list cannot be modified. The runtime complexity of your implementation must
-        be O(N).
-        You are allowed to directly access the variable (_head) of LinkedList objects you create. If
-        the provided start index is invalid, or if there are not enough nodes between the start index
-        and the end of the list to make a slice of the requested size, this method raises a custom
-        “SLLException”.
+        original list contains N nodes, a valid start_index is in range [0, N - 1] inclusive.
+        The runtime complexity will be O(N).
+
         """
+        # If the provided start index is invalid, or if there are not enough nodes between the start index
+        #         and the end of the list to make a slice of the requested size, raise “SLLException”.
         if start_index < 0 or start_index > self.length()-1 or \
                 size > self.length() - start_index or size < 0:
             raise SLLException
@@ -193,9 +194,8 @@ class LinkedList:
         curr = self._head
 
         for index in range(self.length()):
-
             curr = curr.next
-            if index >= start_index and index <= start_index + size - 1:
+            if start_index <= index <= start_index + size - 1:
                 slice_ll.insert_back(curr.value)
 
         return slice_ll

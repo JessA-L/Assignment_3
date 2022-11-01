@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Jessica Allman-LaPorte
+# OSU Email: allmanlj@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 10/31/2022
+# Description: Implements a queue ADT using a singly linked list data structure
 
 
 from SLNode import SLNode
@@ -70,9 +70,13 @@ class Queue:
         if self.is_empty():
             self._head = SLNode(value)
             return
+
+        # traverse through ll
         curr = self._head
         while curr.next != None:
             curr = curr.next
+
+        # create new node, assign the current last node's next to new node
         new_node = SLNode(value)
         curr.next = new_node
         new_node.next = None
