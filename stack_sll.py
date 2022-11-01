@@ -6,7 +6,6 @@
 # Description: Implements a stack ADT using a single linked list data structure
 
 
-
 from SLNode import SLNode
 
 
@@ -73,7 +72,6 @@ class Stack:
         new_node = SLNode(value)
         new_node.next = self._head
         self._head = new_node
-
 
     def pop(self) -> object:
         """
